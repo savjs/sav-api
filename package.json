@@ -1,6 +1,6 @@
 {
   "name": "sav-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "api for savjs",
   "main": "dist/sav-api.cjs.js",
   "module": "dist/sav-api.es.js",
