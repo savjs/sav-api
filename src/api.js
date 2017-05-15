@@ -68,7 +68,12 @@ Api.prototype._send = function (api, opts, fn) {
 
   opts.dataType || (opts.dataType = 'JSON')
   opts.method || (opts.method = 'POST')
-  opts.async = !!opts.async
+
+  if (opts.async === undefined) {
+    opts.async = true
+  } else {
+    opts.async = !!opts.async
+  }
 
   return this.ajax(api, opts, (ret) => {
     this.emit('recv', api, opts, ret)
