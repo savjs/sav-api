@@ -56,8 +56,7 @@ Api.prototype._send = function (api, opts, fn) {
     'method',
     'dataType',
     'timeout',
-    'headers',
-    'async'
+    'headers'
   ].forEach(function (key) {
     if (!(key in opts)) {
       if (key in map) {
@@ -68,12 +67,6 @@ Api.prototype._send = function (api, opts, fn) {
 
   opts.dataType || (opts.dataType = 'JSON')
   opts.method || (opts.method = 'POST')
-
-  if (opts.async === undefined) {
-    opts.async = true
-  } else {
-    opts.async = !!opts.async
-  }
 
   return this.ajax(api, opts, (ret) => {
     this.emit('recv', api, opts, ret)
