@@ -44,7 +44,7 @@ Api.prototype._send = function (api, opts, fn) {
   this.emit('send', api, opts, map)
 
     // url 合并
-  if (!/^http(s)?:/.test(opts.url)) {
+  if (!/^http(s)?:/.test(opts.url || map.url)) {
     var path = (opts.url || map.url || '')
     if (path && path[0] === '/') { // 去掉前面的 /
       path = path.substr(1, path.length)
