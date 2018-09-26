@@ -44,12 +44,14 @@ Api.prototype._send = function (api, opts, fn) {
   this.emit('send', api, opts, map)
 
     // url 合并
-  if (!/^http(s)?:/.test(opts.url || map.url)) {
-    var path = (opts.url || map.url || '')
+  var path = (opts.url || map.url || '')
+  if (!/^http(s)?:/.test(path)) {
     if (path && path[0] === '/') { // 去掉前面的 /
       path = path.substr(1, path.length)
     }
     opts.url = this.baseUrl + path
+  } else {
+    opts.url = path
   }
     // 参数 合并
   [
